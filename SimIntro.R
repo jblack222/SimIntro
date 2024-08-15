@@ -18,8 +18,12 @@
 
 rm(list=ls());
 
+##### SET YOUR DIRECTORY AND VCF FILE NAME ########
+
 setwd("~/path/to/simulated/introduction");
 source("~/path/to/sims1_prog.R");
+my_vcf <- "samples.vcf"
+
 library(psych);
 library(Rlab);
 library(poppr);
@@ -27,7 +31,7 @@ library(vcfR);
 
 pops4genalex <- read.delim("popmap.txt", he_pop1r = F, sep = "\t")
 
-all_vcf<-read.vcfR("all_samples.vcf")
+all_vcf<-read.vcfR(my_vcf)
 all_genind<-vcfR2genind(all_vcf)
 all_genalex<-genind2genalex(all_genind, pop = pops4genalex[,2], overwrite = TRUE, filename = "all_samples.genalex.csv")
 

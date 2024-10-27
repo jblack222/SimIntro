@@ -29,7 +29,7 @@ library(Rlab);
 library(poppr);
 library(vcfR); 
 
-pops4genalex <- read.delim("popmap.txt", he_pop1r = F, sep = "\t")
+pops4genalex <- read.delim("popmap.txt", header = F, sep = "\t")
 
 all_vcf<-read.vcfR(my_vcf)
 all_genind<-vcfR2genind(all_vcf)
@@ -125,15 +125,15 @@ lnN<-length(pop.size_vec);
 for(l in 1:lnN)
   {
   N.sim<-pop.size_vec[l];  
-# Population size at each generation.
+# ^Population size at each generation.
   n.sim<-7333;  
-# No. of locus for each individual at each generation.
+# ^No. of locus for each individual at each generation.
   p.sim<-2;  
-# No. of alleles per locus for each individual at each generation.
+# ^No. of alleles per locus for each individual at each generation.
   T.sim<-50;  
-# No. of generations.
+# ^No. of generations.
   Rep.sim<-5; 
-# No. of repeated sims. for each gen.
+# ^No. of repeated sims. for each gen.
   
   start<-Sys.time();
   data.sims4<-het_simulation3(data_pan,N.sim,n.sim,p.sim,T.sim,Rep.sim);
@@ -164,7 +164,7 @@ matplot(1:T.sim,Na.conf_big,xlab="Gen. time",ylab="",type="l",main="Na",
         col=c(1:length(pop.size_vec)),lty=c(1:length(pop.size_vec)),
         lwd=2,cex.lab=1.5,font.lab=1,cex.axis=1.2,cex.main=1.5,las=1);
 
-write.csv(Na.conf_big,"Na_file.pop_1.pop_2.csv"); 
+write.csv(Na.conf_big,"Na_file.20pop_1.4pop_2.300n.csv"); 
 # this outputs the NA to a csv for the various pop sizes
-write.csv(hete.conf_big,"He_file.pop_1.pop_2.csv"); 
+write.csv(hete.conf_big,"He_file.20pop_1.4pop_2.300n.csv"); 
 # this outputs HE to a csv for the various pop sizes
